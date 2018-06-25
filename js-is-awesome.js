@@ -1,4 +1,5 @@
-// Just some cool ES6+ examples. Like a simple array cheat sheet so far.
+// Just some cool ES6+ examples.
+// TODO Add more detailed explanations for the examples below!!
 
 const animals = [
   { name: "Zeus", species: "dog" },
@@ -25,6 +26,8 @@ const namesAndSpecies = animals.map(
 // console.log(names);
 // console.log(namesAndSpecies);
 
+// --------------------
+
 const bills = [
   { amount: 500 },
   { amount: 250 },
@@ -38,6 +41,8 @@ const bills = [
 const totalAmount = bills.reduce((sum, bill) => sum + bill.amount, 0);
 
 // console.log(`${totalAmount} $`);
+
+// --------------------
 
 // Using mock data we trim, split and use reduce on it. Kinda messy but works.
 const mockData = `
@@ -64,4 +69,40 @@ const output = mockData
     return customers;
   }, {});
 
-console.log(JSON.stringify(output, null, 2));
+// console.log(JSON.stringify(output, null, 2));
+
+// --------------------
+
+// Example of a closure
+const outer_func = msg => {
+  const message = msg;
+
+  const inner_func = () => console.log(message);
+
+  return inner_func;
+};
+
+const hi_func = outer_func("Hi");
+const hello_func = outer_func("Hello");
+
+// If you log hi_func you see that its value is the inner function
+// of the outer_func because thats what its returning!
+
+// console.log(hi_func);
+
+// hi_func();
+// hello_func();
+
+// Closure 2. example
+
+const html_tag = tag =>
+  (wrap_text = msg => console.log(`<${tag}>${msg}</${tag}>`));
+
+const log_h1 = html_tag("h1");
+
+// log_h1("This is the Headline");
+// log_h1("And so is this");
+
+// --------------------
+
+// TODO--Understand and make an example of currying in JS. Might be interesting!
