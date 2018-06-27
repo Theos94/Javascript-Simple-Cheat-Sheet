@@ -11,13 +11,13 @@ const animals = [
   { name: "Tony", species: "fish" }
 ];
 
-// Using filter to just get dogs
+// * Using filter to just get dogs
 const dogs = animals.filter(animal => animal.species === "dog");
 
-// Using map to get all the names
+// * Using map to get all the names
 const names = animals.map(animal => animal.name);
 
-// Use map to get all the names and their respective species
+// *  Use map to get all the names and their respective species
 const namesAndSpecies = animals.map(
   animal => `${animal.name} is a ${animal.species}`
 );
@@ -37,14 +37,14 @@ const bills = [
   { amount: 88 }
 ];
 
-// Use reduce to get the total amount of bills we have to pay
+// * Use reduce to get the total amount of bills we have to pay
 const totalAmount = bills.reduce((sum, bill) => sum + bill.amount, 0);
 
 // console.log(`${totalAmount} $`);
 
 // --------------------
 
-// Using mock data we trim, split and use reduce on it. Kinda messy but works.
+// * Using mock data we trim, split and use reduce on it. Kinda messy but works.
 const mockData = `
   george washington pot 35 4
   george washington pan 25 1
@@ -73,7 +73,7 @@ const output = mockData
 
 // --------------------
 
-// Example of a closure
+// * Example of a closure
 const outer_func = msg => {
   const message = msg;
 
@@ -93,7 +93,7 @@ const hello_func = outer_func("Hello");
 // hi_func();
 // hello_func();
 
-// Closure 2. example
+// * Closure 2. example
 
 const html_tag = tag =>
   (wrap_text = msg => console.log(`<${tag}>${msg}</${tag}>`));
@@ -106,3 +106,17 @@ const log_h1 = html_tag("h1");
 // --------------------
 
 // TODO--Understand and make an example of currying in JS. Might be interesting!
+
+// * Async instead of promises
+
+const getData = async () => {
+  const response = await fetch(
+    "https://08ad1pao69.execute-api.us-east-1.amazonaws.com/dev/random_joke"
+  );
+  const data = await response.json();
+  const setup = data.setup;
+  const punchline = data.punchline;
+
+  console.log(setup);
+  console.log(punchline);
+};
